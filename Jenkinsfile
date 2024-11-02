@@ -29,7 +29,9 @@ pipeline {
 
                         // Clone the repository
                         sh 'gh repo clone Josheleazar/CIDEP'
-                    }        }
+                    }        
+                }
+        }    
         stage('Build Docker Image') {
             steps {
                 script {
@@ -75,4 +77,5 @@ pipeline {
                 body: "Something went wrong in Jenkins."
         }
     }
+    
 }
