@@ -25,6 +25,7 @@ resource "google_compute_instance" "cicd_server" {
     sudo apt update
     sudo apt install -y docker.io google-cloud-sdk
     sudo apt install -y google-cloud-sdk-gke-gcloud-auth-plugin
+    sudo apt install -y docker.io google-cloud-sdk openjdk-17-jdk
   EOF
 
   # Assign the firewall rule via tag, so the instance is configured for ssh access.
