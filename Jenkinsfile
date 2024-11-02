@@ -22,11 +22,14 @@ pipeline {
             }
         }
         stage('Clone Repository') {
-            steps {
-                // Clone application code with Dockerfile
-                git branch: 'application', url: 'https://github.com/Josheleazar/CIDEP.git'
-            }
-        }
+            script {
+                    // Authenticate using GitHub CLI with the stored token
+                    withCredentials([string(credentialsId: 'ccb5f0db-747d-4c7e-9cee-694faa7cc9d3', variable: 'GITHUB_TOKEN')]) {
+                        sh 'echo $GITHUB_TOKEN | gh auth login --with-token'
+
+                        // Clone the repository
+                        sh 'gh repo clone Josheleazar/CIDEP'
+                    }        }
         stage('Build Docker Image') {
             steps {
                 script {
