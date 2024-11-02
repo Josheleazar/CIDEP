@@ -24,7 +24,8 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone application code with Dockerfile
-                git branch: 'application', url: 'https://github.com/Josheleazar/CIDEP.git'
+                git branch: 'application', url: 'https://github.com/Josheleazar/CIDEP.git',
+                credentialsId: 'ccb5f0db-747d-4c7e-9cee-694faa7cc9d3'  // Specify your GitHub token ID here
             }
         }
         stage('Build Docker Image') {
