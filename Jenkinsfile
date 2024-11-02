@@ -23,10 +23,8 @@ pipeline {
         }
         stage('Clone Repository') {
             steps {
-                steps {
-        // Clone application code with Dockerfile
-        git branch: 'application', url: 'https://github.com/Josheleazar/CIDEP.git'
-    }
+                // Clone application code with Dockerfile
+                git branch: 'application', url: 'https://github.com/Josheleazar/CIDEP.git'
             }
         }
         stage('Build Docker Image') {
