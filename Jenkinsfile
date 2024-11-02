@@ -15,7 +15,7 @@ pipeline {
                         branches: [[name: "${env.BRANCH_NAME}"]],
                         userRemoteConfigs: [[
                             url: 'https://github.com/Josheleazar/CIDEP.git',
-                            credentialsId: 'GitHub Token'  // Use the ID you gave your token
+                            credentialsId: 'ccb5f0db-747d-4c7e-9cee-694faa7cc9d3'  // Use the ID you gave your token
                         ]]
                     ])
                 }
