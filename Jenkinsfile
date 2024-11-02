@@ -27,6 +27,10 @@ pipeline {
                     // Authenticate using GitHub CLI with the stored token
                     withCredentials([string(credentialsId: 'ccb5f0db-747d-4c7e-9cee-694faa7cc9d3', variable: 'GITHUB_TOKEN')]) {
                         sh 'echo $GITHUB_TOKEN | gh auth login --with-token'
+
+                        // Print out the current directory and git configuration for debugging
+                        sh 'pwd'
+                        sh 'git config --list'
                         // Clone the repository
                         sh 'gh repo clone Josheleazar/CIDEP'
                     }
