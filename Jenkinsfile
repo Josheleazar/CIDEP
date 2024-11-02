@@ -1,5 +1,5 @@
 pipeline {
-    agent cicd
+    agent { label 'cicd' }
     environment {
         PROJECT_ID = 'cidep-440311'
         CLUSTER_NAME = 'cidep-cluster'
