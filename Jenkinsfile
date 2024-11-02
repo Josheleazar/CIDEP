@@ -7,6 +7,15 @@ pipeline {
         DOCKER_IMAGE = 'josheleazar/cidep'
     }
     stages {
+        stage('Checkout') {
+            steps {
+                echo "Custom checkout: ${env.BRANCH_NAME} on ${pwd()}"
+                checkout([$class: 'GitSCM', 
+                           branches: [[name: "*/${env.BRANCH_NAME}"]], 
+                           userRemoteConfigs: [[url: 'https://github.com/Josheleazar/CIDEP.git', credentialsId: 'github-credentials']]
+                ])
+            }
+        }
         stage('Clone Repository') {
             steps {
                 // Clone application code with Dockerfile
