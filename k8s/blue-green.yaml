@@ -4,6 +4,10 @@ metadata:
   name: cidep-blue
 spec:
   replicas: 3
+  selector:                  # Add this section
+    matchLabels:
+      app: cidep
+      version: blue
   template:
     metadata:
       labels:
@@ -22,6 +26,10 @@ metadata:
   name: cidep-green
 spec:
   replicas: 3
+  selector:                  # Add this section
+    matchLabels:
+      app: cidep
+      version: green
   template:
     metadata:
       labels:
