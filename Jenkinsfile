@@ -79,7 +79,8 @@ pipeline {
                     // Update deployment YAML with the new Docker image version
                     sh "sed -i 's|image: .*|image: ${DOCKER_IMAGE}:${env.BUILD_ID}|' k8s/blue-green.yaml"
                     // Apply Kubernetes YAML for deployment
-                    sh 'kubectl apply -f k8s/'
+                    sh 'kubectl apply -f k8s/blue-green.yaml'
+                    sh 'kubectl apply -f k8s/selector.yaml'
                 }
             }
         }
