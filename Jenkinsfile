@@ -61,7 +61,7 @@ pipeline {
             steps {
                 script {
                     // List files in the k8s directory for debugging
-                    sh 'ls -la k8s/'
+                    sh 'ls -la'
                     // Update deployment YAML with the new Docker image version
                     sh "sed -i 's|image: .*|image: ${DOCKER_IMAGE}:${env.BUILD_ID}|' k8s/blue-green.yaml"
                     // Apply Kubernetes YAML for deployment
