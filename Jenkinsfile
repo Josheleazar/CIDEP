@@ -57,6 +57,20 @@ pipeline {
                 }
             }
         }
+        stage('Checkout 2') {
+            steps {
+                script {
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: "${env.BRANCH_NAME}"]],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/Josheleazar/CIDEP.git',
+                            credentialsId: 'ccb5f0db-747d-4c7e-9cee-694faa7cc9d3'  // Use the ID you gave your token
+                        ]]
+                    ])
+                }
+            }
+        }
         stage('Deploy to GKE') {
             steps {
                 script {
