@@ -31,6 +31,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    sh 'whoami'
+                    sh 'groups'
                     // Build Docker image for Flask app
                     dockerImage = docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}")
                 }
