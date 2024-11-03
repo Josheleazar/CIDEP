@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECT_ID = 'cidep-440311'
         CLUSTER_NAME = 'cidep-cluster'
-        CLUSTER_ZONE = 'me-west1-a'
+        CLUSTER_ZONE = 'me-west1'
         DOCKER_IMAGE = 'josheleazar/cidep'
     }
     stages {
@@ -53,7 +53,7 @@ pipeline {
                     // Authenticate with GCP and configure kubectl with GKE credentials
                     sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
                     sh "gcloud config set project ${PROJECT_ID}"
-                    sh "gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${CLUSTER_ZONE}"
+                    sh "gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${CLUSTER_ZONE}"
                 }
             }
         }
