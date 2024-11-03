@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cidep-blue
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cidep
+        version: blue
+    spec:
+      containers:
+      - name: cidep-container
+        image: your-repo/your-app:${BUILD_ID}
+        ports:
+        - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cidep-green
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cidep
+        version: green
+    spec:
+      containers:
+      - name: cidep-container
+        image: your-repo/your-app:${BUILD_ID}
+        ports:
+        - containerPort: 5000

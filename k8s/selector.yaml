@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cidep-service
+spec:
+  selector:
+    app: cidep
+    version: blue  # or green
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
