@@ -123,7 +123,7 @@ Replace `<jenkins-url>` with the actual URL of your Jenkins server and set up a 
 
 - **Architecture Diagram**: Depicting CI/CD stages, Kubernetes blue-green switching, and pipeline execution flow.
 
-![Architecture](images/arch.drawio.png)
+![Architecture](images/arch.png)
 
 - **Jenkins Pipeline Execution**: Screenshot of a successful pipeline job for the main Jenkinsfile.
 
@@ -147,4 +147,13 @@ During development, configuring the Jenkins agent and multibranch pipeline was c
 
 - Document deployment latency, error rates, and overall pipeline efficiency.
 - Analyze CI/CD optimizations and potential future improvements.
+
+## Contact Information
+Feel free to reach out if you have any questions or need further assistance:
+
+Name: Josh Eleazar
+
+Email: joelson30.j@gmail.com
+
+LinkedIn: https://www.linkedin.com/in/josheleazar/
 
