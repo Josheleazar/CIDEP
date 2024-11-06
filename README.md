@@ -127,7 +127,7 @@ Replace `<jenkins-url>` with the actual URL of your Jenkins server and set up a 
 
 - **Jenkins Pipeline Execution**: Screenshot of a successful pipeline job for the main Jenkinsfile.
 
-![Build67](images/Build67.png)
+![Build67](images/Build67.PNG)
 
 - **Grafana Dashboard**: For a demonstration of a more robust monitoring setup, visit one of my earlier projects.
 
