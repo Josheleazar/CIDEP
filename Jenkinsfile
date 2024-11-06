@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // Clone application code with Dockerfile
                 git branch: 'main', url: 'https://github.com/Josheleazar/Jenk.git',
-                credentialsId: 'ccb5f0db-747d-4c7e-9cee-694faa7cc9d3'  // Specify your GitHub token ID here
+                credentialsId: 'ccb5f0db-747d-4c7e-9cee-694faa7cc9d3'  // Specify your GitHub token ID(Jenkins Credentials ID) here
             }
         }
         stage('Build Docker Image') {
@@ -41,7 +41,7 @@ pipeline {
         stage('Push Image to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') { //Generate access token from docker hub and use it to create dockerhub-credentials(A new credential with this ID) in Jenkins UI
                         dockerImage.push()
                     }
                 }
@@ -71,6 +71,7 @@ pipeline {
                 }
             }
         }
+        //The previous stage makes sure that the necessary files are pulled from SCM and placed into the working directory for use in the next step.
         stage('Deploy to GKE') {
             steps {
                 script {
@@ -87,7 +88,7 @@ pipeline {
     }
     post {
         failure {
-            mail to: 'your-email@example.com',
+            mail to: 'josheleazar.dev@gmail.com',
                 subject: "Build failed in Jenkins: ${currentBuild.fullDisplayName}",
                 body: "Something went wrong in Jenkins."
         }

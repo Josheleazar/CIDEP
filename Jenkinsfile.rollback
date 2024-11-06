@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    environment {
+        SERVICE_NAME = "cidep-service"  // Replace with your actual service name in Kubernetes
+        NAMESPACE = "default"               // Replace with the correct namespace if not default
+    }
+    stages {
+        stage('Toggle Deployment Selector') {
+            steps {
+                script {
+                    // Get the current selector for the service
+                    def currentSelector = sh(script: "kubectl get svc ${SERVICE_NAME} -n ${NAMESPACE} -o=jsonpath='{.spec.selector.version}'", returnStdout: true).trim()
+
+                    // Determine new selector
+                    def newSelector = currentSelector == "blue" ? "green" : "blue"
+                    
+                    // Switch the service selector to the other deployment
+                    sh "kubectl set selector svc/${SERVICE_NAME} version=${newSelector} -n ${NAMESPACE}"
+                    echo "Switched ${SERVICE_NAME} service selector from ${currentSelector} to ${newSelector}"
+                }
+            }
+        }
+    }
+}
